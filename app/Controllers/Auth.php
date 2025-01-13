@@ -32,25 +32,15 @@ class Auth extends BaseController
                     'nama' => $user['nama'],
                     'email' => $user['email'],
                     'alamat' => $user['alamat'],
-                    'role' => $user['role'],
                     'isLoggedIn' => true
                 ]);
 
                 $session->setFlashdata('welcome', 'Selamat Datang, ' . $user['nama']);
-
-                // Cek role dan arahkan ke halaman yang sesuai
-                if ($user['role'] === 'admin') {
-                    return redirect()->to('/admin'); // Halaman dashboard untuk admin
-                } elseif ($user['role'] === 'pelanggan') {
-                    return redirect()->to('/home'); // Halaman home untuk pelanggan
-                }
-            } else {
-                // Password salah
-                return redirect()->back()->with('error', 'Password salah');
+                return redirect()->to('admin/home');
             }
-        } else {
-            // User tidak ditemukan
-            return redirect()->back()->with('error', 'Email tidak ditemukan');
+            // Error handling
+            $errorMsg = $user ? 'Password salah!' : 'Email tidak ditemukan!';
+            return redirect()->back()->withInput()->with('error', $errorMsg);
         }
     }
 
@@ -70,7 +60,6 @@ class Auth extends BaseController
             'nama'     => $this->request->getPost('nama'),
             'email'    => $this->request->getPost('email'),
             'password' => $this->request->getPost('password'),
-            'role'     => 2, // Default role
         ];
 
         // Validasi password dan confirm password

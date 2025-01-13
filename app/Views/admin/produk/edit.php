@@ -37,12 +37,6 @@
             <input type="number" class="form-control" id="harga" name="harga" value="<?= old('harga', $produk['harga']); ?>" placeholder="Masukkan harga produk" required>
         </div>
 
-        <!-- Input Stok -->
-        <div class="mb-3">
-            <label for="stok" class="form-label">Stok Produk</label>
-            <input type="number" class="form-control" id="stok" name="stok" value="<?= old('stok', $produk['stok']); ?>" placeholder="Masukkan jumlah stok produk" required>
-        </div>
-
         <!-- Input Kategori -->
         <div class="mb-3">
             <label for="kategori">Kategori</label>

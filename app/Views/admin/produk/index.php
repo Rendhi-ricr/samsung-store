@@ -28,7 +28,6 @@
                             <th>Deskripsi</th>
                             <th>Gambar</th>
                             <th>Harga</th>
-                            <th>Stok</th>
                             <th>Kategori</th>
                             <th>Aksi</th>
                         </tr>
@@ -40,7 +39,6 @@
                             <th>Deskripsi</th>
                             <th>Gambar</th>
                             <th>Harga</th>
-                            <th>Stok</th>
                             <th>Kategori</th>
                             <th>Aksi</th>
                         </tr>
@@ -53,9 +51,8 @@
                                 <td><?= $no++; ?></td>
                                 <td><?= $p->nama; ?></td>
                                 <td><?= $p->deskripsi; ?></td>
-                                <td><?= $p->gambar; ?></td>
+                                <td><img src="<?= base_url('img/produk/' . $p->gambar) ?>" alt="<?= $p->nama ?>" style="width: 200px; heigh:10px;"></td>
                                 <td>Rp <?= number_format($p->harga, 0, ',', '.'); ?></td>
-                                <td><?= $p->stok; ?></td>
                                 <td><?= $p->nama_kategori; ?></td>
                                 <td><a href="<?= base_url('admin/produk/edit/' . $p->id_produk) ?>" class="btn btn-warning">Edit</a>
                                     <a href="<?= base_url('admin/produk/delete/' . $p->id_produk) ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')">Hapus</a>

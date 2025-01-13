@@ -17,7 +17,6 @@ class Home extends BaseController
     public function index()
     {
         $data = [
-            'isLoggedIn' => session()->has('id_user'),
             'produk' => $this->produkModel->getAll() // Mengambil semua data produk
         ];
         return view('home', $data);

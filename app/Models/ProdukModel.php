@@ -26,4 +26,21 @@ class ProdukModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    function getByKategori($id_kategori)
+    {
+        $builder = $this->db->table('tabel_produk');
+        $builder->select('tabel_produk.*, tabel_kategori.nama_kategori');
+        $builder->join('tabel_kategori', 'tabel_kategori.id_kategori = tabel_produk.id_kategori');
+        $builder->where('tabel_produk.id_kategori', $id_kategori);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    function getKategori()
+    {
+        $builder = $this->db->table('tabel_kategori');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

@@ -46,7 +46,6 @@ class Produk extends BaseController
             'deskripsi' => 'required',
             'gambar' => 'uploaded[gambar]|max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/png,image/jpg,image/jpeg]',
             'harga' => 'required|numeric',
-            'stok' => 'required|numeric',
         ])) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
@@ -63,7 +62,6 @@ class Produk extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $namaGambar,
             'harga' => $this->request->getPost('harga'),
-            'stok' => $this->request->getPost('stok'),
             'id_kategori' => $id_kategori,
         ]);
 
@@ -95,7 +93,6 @@ class Produk extends BaseController
             'deskripsi' => 'required',
             'gambar' => 'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/png,image/jpg,image/jpeg]',
             'harga' => 'required|numeric',
-            'stok' => 'required|numeric',
         ])) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
@@ -127,8 +124,7 @@ class Produk extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $namaGambar,
             'harga' => $this->request->getPost('harga'),
-            'stok' => $this->request->getPost('stok'),
-            'kategori' => $this->request->getVar('id_kategori'),
+            'id_kategori' => $this->request->getVar('id_kategori'),
         ]);
 
         return redirect()->to('/admin/produk')->with('success', 'Produk berhasil diperbarui!');

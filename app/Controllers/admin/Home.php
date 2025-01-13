@@ -3,24 +3,25 @@
 namespace App\Controllers\admin;
 
 use App\Controllers\BaseController;
-// use App\Models\KendaraanModels;
-// use App\Models\TransaksiModels;
-// use App\Models\UserModels;
+use App\Models\KategoriModel;
+use App\Models\ProdukModel;
+use App\Models\GaleriModels;
 
 class Home extends BaseController
 {
     public function index()
     {
-        // $kendaraan = count(model(KendaraanModels::class)->findAll());
-        // $transaksi = count(model(transaksiModels::class)->findAll());
-        // $user = count(model(UserModels::class)->findAll());
+        $kategori = count(model(KategoriModel::class)->findAll());
+        $produk = count(model(ProdukModel::class)->findAll());
+        $galeri = count(model(GaleriModels::class)->findAll());
 
-        // $data = [
-        //     'mobil' => $kendaraan,
-        //     'transaksi' => $transaksi,
-        //     'user' => $user,
-        // ];
+        $data = [
+            'kategori' => $kategori,
+            'produk' => $produk,
+            'galeri' => $galeri,
 
-        return view('admin/index');
+        ];
+
+        return view('admin/index', $data);
     }
 }
